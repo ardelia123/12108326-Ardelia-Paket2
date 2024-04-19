@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('amount');
             $table->double('sub_total');
-            $table->foreignid('product_id');
-            $table->foreignid('sale_id');
+            $table->foreignId('product_id');
+            $table->foreignId('sale_id');
             $table->timestamps();
 
             $table->foreign('sale_id')->references('id')->on('sale')->onDelete('cascade');

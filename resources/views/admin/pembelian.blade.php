@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <body>
 	<div class="wrapper">
         <div class="content">
@@ -10,21 +9,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="col-lg-12 margin-tb">
-                                <div class="pull-left">
-                                    <h2>CRUD Absensi</h2>
-                                </div>
-                                <div class="pull-right">
-                                    <a class="btn btn-success btn-dark mb-3 float-end" href="{{ route('products.create') }}"> Create</a>
-                                </div>
+                            <div class="header">
+                                <h4 class="title">Striped Table</h4>
+                                <p class="category">Here is a subtitle for this table</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
                                     <thead>
-                                        <th>Image</th>
+                                        <th>ID</th>
                                     	<th>Name</th>
-                                    	<th>Stock</th>
-                                    	<th>Price</th>
+                                    	<th>Salary</th>
+                                    	<th>Country</th>
+                                    	<th>City</th>
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -81,20 +77,5 @@
 	</div>
 	</div>
 </body>
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="assets/js/bootstrap-checkbox-radio.js"></script>
-	<!--  Charts Plugin -->
-	<script src="assets/js/chartist.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-	<script src="assets/js/paper-dashboard.js"></script>
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
 
 @endsection

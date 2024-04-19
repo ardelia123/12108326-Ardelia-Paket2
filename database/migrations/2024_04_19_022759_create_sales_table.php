@@ -15,7 +15,13 @@ return new class extends Migration
             $table->id();
             $table->date('sale_date');
             $table->double('total_price');
+            $table->foreignId('customer_id');
+            $table->foreignId('user_id');
             $table->timestamps();
+
+            
+            $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
         });
     }
 

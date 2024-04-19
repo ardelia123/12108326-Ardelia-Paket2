@@ -13,7 +13,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::latest()->paginate(6);
+
+        return view('students.index',compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
     /**
@@ -21,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tambahproduk');
     }
 
     /**
@@ -29,7 +32,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' =>'required',
+            'price' =>'required',
+            'stock' =>'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $fileName = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/images', $fileName);
+        
+        Product::create($request->all());
+
+        return redirect()->route('admin.produk')
+            ->with('success','Product created successfully.');
     }
 
     /**
@@ -45,7 +61,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.produkedit',compact('product'));
     }
 
     /**
@@ -53,7 +69,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' =>'required',
+            'price' =>'required',
+           'stock' =>'required',
+            'image' =>'required'
+        ]);
+
+        $product->update($request->all());
+
+        return redirect()->route('admin.produk')
+            ->with('Success!','Product updated successfully');
     }
 
     /**
@@ -61,6 +87,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('admin.produk')
+            ->with('Success!','Product deleted successfully');
     }
 }
